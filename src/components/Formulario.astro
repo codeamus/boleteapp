@@ -35,11 +35,14 @@ import { IVA_VALUES } from "@utils/const";
   if ($form) {
     $form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const $years = document.querySelector("#years");
-      const $input = document.querySelector("#inputPrice");
-      const $result = ($years?.value / $input.value) * 100;
+      const $years = (document.getElementById("years") as HTMLSelectElement)
+        .value;
+      const $inputPrice = (
+        document.getElementById("inputPrice") as HTMLInputElement
+      ).value;
 
-      console.log($result);
+      console.log($years);
+      console.log($inputPrice);
     });
   }
 </script>
