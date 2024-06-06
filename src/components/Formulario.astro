@@ -1,0 +1,45 @@
+---
+import { IVA_VALUES } from "@utils/const";
+---
+
+<section class="flex justify-center items-center w-full">
+  <form id="form w-full">
+    <div class="flex mb-6 gap-4">
+      <select
+        required
+        id="years"
+        class="bg-gray-50 border border-gray-300 text-[#393E46] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 invalid:text-gray-400"
+        ><option disabled selected>- Elegir año -</option>
+        {
+          IVA_VALUES.map(({ anio, value }) => (
+            <option value={value}>{anio}</option>
+          ))
+        }
+      </select>
+      <input
+        required
+        class="px-2 rounded-lg text-sm text-[#393E46]"
+        type="number"
+        name="inputPrice"
+        id="inputPrice"
+        placeholder="Ingrese monto"
+      />
+    </div>
+    <div>
+      <button type="submit" class="bg-red-300 p-3">Calcular</button>
+    </div>
+  </form>
+</section>
+<script>
+  const $form = document.querySelector("form");
+  if ($form) {
+    $form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const $years = document.querySelector("#years");
+      const $input = document.querySelector("#inputPrice");
+      const $result = ($years?.value / $input.value) * 100;
+
+      console.log($result);
+    });
+  }
+</script>

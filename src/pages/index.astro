@@ -1,33 +1,19 @@
 ---
+import Formulario from "@components/Formulario.astro";
+import InfoUf from "@components/InfoUf.astro";
 import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout title="Boleteapp - Home">
   <main>
     <div class="flex flex-col justify-center items-center p-8">
-      <h1 class="text-5xl uppercase text-white text-center">Boleteapp</h1>
-      <p class="text-white text-center text-xl text-pretty mt-4 max-w-2xl">
+      <h1 class="text-5xl uppercase text-[#222831] text-center">Boleteapp</h1>
+      <p class="text-[#393E46] text-center text-xl text-pretty mt-4 max-w-2xl">
         Calcula tus Boletas de Honorarios. Actualizado según la Ley 21.133, que
         incrementa progresivamente la retención de impuestos.
       </p>
     </div>
-    <div class="flex justify-center items-center">
-      <form class="max-w-4xl">
-        <div>
-          <label for="selectYear" class="text-white">Seleccione año:</label>
-          <select name="selectYear" id="selectYear">
-            <option value="">2024</option>
-            <option value="">2023</option>
-            <option value="">2022</option>
-            <option value="">2021</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="inputPrice" class="text-white">Ingrese monto:</label>
-          <input type="text" name="inputPrice" id="inputPrice" />
-        </div>
-      </form>
-    </div>
+    <InfoUf />
+    <Formulario />
   </main>
 </Layout>
