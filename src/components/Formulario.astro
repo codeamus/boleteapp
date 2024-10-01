@@ -5,15 +5,21 @@ import { IVA_VALUES } from "@utils/const";
 <div
   class="layout-content-container flex flex-col w-[512px] py-5 max-w-[960px] flex-1"
 >
-  <form id="form" class="flex flex-col max-w-[480px]">
+  <form id="form" class="flex flex-col max-w-[480px] mt-10">
     <div>
-      <div class="flex flex-wrap items-end gap-4 px-4 py-3">
+      <div class="flex flex-col flex-wrap items-center gap-4 px-4 py-3">
+        <label for="covid flex items-center">
+          <span class="text-[#57837b] text-sm font-normal leading-normal">
+            Préstamo del estado
+          </span>
+          <input type="checkbox" name="covid" id="checkboxCovid" />
+        </label>
         <label class="flex flex-col min-w-40 flex-1">
           <select
             id="years"
             class="form-input w-full resize-none overflow-hidden rounded-xl text-[#57837b] outline-none focus:ring-0 border-none bg-[#F4EFE6] h-14 placeholder:text-[#57837b] p-4 text-base font-normal"
-            required
           >
+            <option value="">Seleccione año</option>
             {
               IVA_VALUES.map(({ anio, value }) => (
                 <option value={value}>{anio}</option>
@@ -93,36 +99,72 @@ import { IVA_VALUES } from "@utils/const";
   const $inputPriceElement = document.getElementById(
     "inputPrice"
   ) as HTMLInputElement | null;
+  const $checkboxCovid = document.getElementById(
+    "checkboxCovid"
+  ) as HTMLInputElement | null;
+
+  const $yearSpan = document.getElementById("yearSpan");
+  const $ivaSpan = document.getElementById("ivaSpan");
+
+  const $form = document.querySelector("form");
 
   // Cambiar selector
   if ($ivaElement) {
     $ivaElement.addEventListener("change", (e) => {
       // Setear Año
-      const $yearSpan = document.getElementById("yearSpan");
       if ($yearSpan) {
         $yearSpan.textContent =
           $ivaElement.options[$ivaElement.selectedIndex].text;
       }
 
       // Setear IVA
-      const $ivaSpan = document.getElementById("ivaSpan");
       if ($ivaSpan) {
         $ivaSpan.textContent = $ivaElement.value;
       }
     });
   }
 
+  // Cambiar checkbox
+
+  if ($checkboxCovid) {
+    $checkboxCovid.addEventListener("change", (e) => {
+      if ($checkboxCovid && $checkboxCovid.checked) {
+        if ($ivaElement) {
+          $ivaElement.value = "";
+        }
+
+        if ($yearSpan) {
+          $yearSpan.textContent = "2024";
+        }
+
+        if ($ivaSpan) {
+          $ivaSpan.textContent = " 16.75";
+        }
+      }
+    });
+  }
+
+  // Al seleccionar año limpiar checkbox
+  if ($ivaElement) {
+    $ivaElement.addEventListener("change", (e) => {
+      if ($checkboxCovid) {
+        $checkboxCovid.checked = false;
+      }
+    });
+  }
+
   // Enviar formulario
   document.addEventListener("DOMContentLoaded", () => {
-    const $form = document.querySelector("form");
-
     if ($form) {
       $form.addEventListener("submit", (e) => {
         e.preventDefault();
 
         // Verificar que los elementos existan
-        if ($ivaElement && $inputPriceElement) {
-          const $iva = parseFloat($ivaElement.value);
+
+        if ($ivaElement && $inputPriceElement && $checkboxCovid) {
+          const $iva = $checkboxCovid.checked
+            ? 16.75
+            : parseFloat($ivaElement.value);
           const $inputPrice = parseFloat($inputPriceElement.value);
 
           if (!isNaN($iva) && !isNaN($inputPrice)) {
