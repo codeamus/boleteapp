@@ -2,6 +2,9 @@
 import Formulario from "@components/Formulario.astro";
 import Layout from "@layouts/Layout.astro";
 import { IVA_VALUES } from "@utils/const";
+
+let year = IVA_VALUES[0].anio;
+let iva = IVA_VALUES[0].value;
 ---
 
 <Layout
@@ -18,7 +21,9 @@ import { IVA_VALUES } from "@utils/const";
         aumenta gradualmente la retención de impuestos.
       </p>
       <span class="bg-[#57837b] text-[#f1ecc3] rounded-md p-3 w-fit">
-        Tasa Retención Año {IVA_VALUES[0].anio}: {IVA_VALUES[0].value}%
+        Tasa Retención Año <span id="yearSpan">{year}</span>: <span id="ivaSpan"
+          >{iva}</span
+        >%
       </span>
     </div>
     <Formulario />
