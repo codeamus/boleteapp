@@ -1,7 +1,7 @@
 ---
 import Formulario from "@components/Formulario.astro";
-import Navbar from "@components/Navbar.astro";
 import Layout from "@layouts/Layout.astro";
+import { IVA_VALUES } from "@utils/const";
 ---
 
 <Layout
@@ -9,13 +9,18 @@ import Layout from "@layouts/Layout.astro";
   description="Calcula tus boletas de honorarios"
 >
   <main
-    class="relative flex size-full min-h-screen flex-col bg-[#FFFFFF] group/design-root overflow-x-hidden"
+    class="relative flex size-full min-h-screen flex-col bg-[#f1ecc3] group/design-root overflow-x-hidden justify-center items-center py-10"
   >
-    <div class="layout-container flex h-full grow flex-col">
-      <Navbar />
-      <div class="px-40 flex flex-1 justify-center py-5">
-        <Formulario />
-      </div>
+    <div class="flex flex-col gap-4 items-center">
+      <h1 class="text-[#57837b] text-4xl font-bold">BOLETEAPP</h1>
+      <p class="text-[#515e63]">
+        Calcula tus Boletas de Honorarios. Actualizado a la Ley 21.133 que
+        aumenta gradualmente la retención de impuestos.
+      </p>
+      <span class="bg-[#57837b] text-[#f1ecc3] rounded-md p-3 w-fit">
+        Tasa Retención Año {IVA_VALUES[0].anio}: {IVA_VALUES[0].value}%
+      </span>
     </div>
+    <Formulario />
   </main>
 </Layout>
