@@ -1,19 +1,18 @@
 ---
 import Formulario from "@components/Formulario.astro";
-import InfoUf from "@components/InfoUf.astro";
+import Navbar from "@components/Navbar.astro";
 import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout title="Boleteapp - Home">
-  <main>
-    <div class="flex flex-col justify-center items-center p-8">
-      <h1 class="text-5xl uppercase text-[#222831] text-center">Boleteapp</h1>
-      <p class="text-[#393E46] text-center text-xl text-pretty mt-4 max-w-2xl">
-        Calcula tus Boletas de Honorarios. Actualizado según la Ley 21.133, que
-        incrementa progresivamente la retención de impuestos.
-      </p>
+  <main
+    class="relative flex size-full min-h-screen flex-col bg-[#FFFFFF] group/design-root overflow-x-hidden"
+  >
+    <div class="layout-container flex h-full grow flex-col">
+      <Navbar />
+      <div class="px-40 flex flex-1 justify-center py-5">
+        <Formulario />
+      </div>
     </div>
-    <InfoUf />
-    <Formulario />
   </main>
 </Layout>
