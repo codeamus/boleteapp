@@ -14,6 +14,9 @@ dependencies:
   '@astrojs/vercel':
     specifier: ^7.6.0
     version: 7.6.0(astro@4.9.2)
+  '@fontsource-variable/fira-code':
+    specifier: ^5.1.0
+    version: 5.1.0
   '@fontsource/roboto':
     specifier: ^5.0.13
     version: 5.0.13
@@ -865,6 +868,10 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@fontsource-variable/fira-code@5.1.0:
+    resolution: {integrity: sha512-fwJbJLvyZ2BhgBSPYCNsrQ6IFQTpRu9GWXY8N20wHTpbhV0Ro5QJihiZV060Ay3kVR6IVH/oSVe/cr7Ube28gg==}
+    dev: false
 
   /@fontsource/roboto@5.0.13:
     resolution: {integrity: sha512-j61DHjsdUCKMXSdNLTOxcG701FWnF0jcqNNQi2iPCDxU8seN/sMxeh62dC++UiagCWq9ghTypX+Pcy7kX+QOeQ==}
